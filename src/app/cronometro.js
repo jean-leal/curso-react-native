@@ -4,19 +4,29 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 export default function Cronometro() {
   const [numero, setNumero] = useState(0.0)
-
+  const [timer, setTimer] = useState(null)
+  const [btnInicio, setBtnInicio] = useState("INICIAR")
 
   const iniciar = () => {
-    setInterval(() => {
-      setNumero((numero)=> numero + 0.1)
-    },1000)
+    if (timer !== null) {
+      clearInterval(timer)
+      setTimer(null)
+      setBtnInicio("INICIAR")
+    } else {     
+      setTimer(setInterval(() => {
+        setNumero((numero) => numero + 0.1)
+      }, 100))
+      setBtnInicio("PAUSAR")
+    }
   }
 
-
-
-
   const zerar = () => {
-
+    if(timer !== null ){
+      clearInterval(timer)
+      setTimer(null)
+    }
+    setNumero(0.0)
+    setBtnInicio("INICIAR")
   }
 
   return (
@@ -28,7 +38,7 @@ export default function Cronometro() {
       <Text style={styles.timer}>{numero.toFixed(1)}</Text>
       <View style={styles.btnArea}>
         <TouchableOpacity style={styles.btn} onPress={iniciar}>
-          <Text style={styles.btnTexto}>INICIAR</Text>
+          <Text style={styles.btnTexto}>{btnInicio}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.btn} onPress={zerar}>
           <Text style={styles.btnTexto}>ZERAR</Text>
