@@ -29,6 +29,16 @@ export default function Layout() {
             }
           }}
         />
+        <Tabs.Screen
+          name="banco"
+          options={{
+            headerShown: false,
+            title: "Banco",
+            tabBarIcon: ({ focused, color, size }) => {
+              return <MaterialCommunityIcons name="bank" size={24} />
+            }
+          }}
+        />
       </Tabs>
     </SafeAreaView>
   );
