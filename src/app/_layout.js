@@ -39,6 +39,16 @@ export default function Layout() {
             }
           }}
         />
+        <Tabs.Screen
+          name="combustivel"
+          options={{
+            headerShown: false,
+            title: "Combustivel",
+            tabBarIcon: ({ focused, color, size }) => {
+              return <MaterialCommunityIcons name="fuel" size={24} />
+            }
+          }}
+        />
       </Tabs>
     </SafeAreaView>
   );
