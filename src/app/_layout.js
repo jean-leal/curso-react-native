@@ -49,6 +49,16 @@ export default function Layout() {
             }
           }}
         />
+        <Tabs.Screen
+          name="filmes"
+          options={{
+            headerShown: false,
+            title: "Filmes",
+            tabBarIcon: ({ focused, color, size }) => {
+              return <MaterialCommunityIcons name="film" size={24} />
+            }
+          }}
+        />
       </Tabs>
     </SafeAreaView>
   );
